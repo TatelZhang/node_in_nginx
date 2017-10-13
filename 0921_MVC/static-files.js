@@ -18,8 +18,9 @@ function staticFiles(url, dir){
     return async (ctx, next)=>{
         //静态文件请求路径
         let rpath = ctx.request.path;
+        // rpath: /static/css/bootstrap.css.map
+        console.log(`静态文件请求：${rpath}  url:${ctx.request.url}`);
         
-        console.log(`静态文件请求：${rpath}  url:${ctx.request.url}`)
         //判断 rpath 是否以 /static/ 开头，如果是就是为静态资源请求
         if(rpath.startsWith(url)){
             // 去除/static/ 头，组合请求的绝对路径
@@ -33,7 +34,7 @@ function staticFiles(url, dir){
                 ctx.response.status = 404;
             }
         }else{
-            console.log(`无静态文件请求`)
+            console.log(`无静态文件请求`);
             await next();
         }
     };

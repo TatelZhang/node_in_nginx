@@ -24,7 +24,7 @@ app.use(async (ctx, next)=>{
 // 判断是为生产环境，如果不是则。。。
 if(!isProduction){
     let staticFiles = require('./static-files');
-    app.use(staticFiles('/static/', __dirname + '/static'));
+    app.use(staticFiles('/static/', __dirname + '/static/'));
 }
 //app.use(staticFiles('/static/', __dirname+'/static'));
 
